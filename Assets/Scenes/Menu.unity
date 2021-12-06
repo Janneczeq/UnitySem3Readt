@@ -2266,7 +2266,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 861162673}
         m_TargetAssemblyTypeName: RaceLauncher, Assembly-CSharp
-        m_MethodName: StartTrial
+        m_MethodName: ConnectNetwork
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -51,5 +51,36 @@ public class RaceLauncher : MonoBehaviourPunCallbacks
         networkText.text += "Failed to join random room. \n";
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = this.maxPlayerPerRoom });
         
+ 
+    }
+
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        networkText.text += "Disconnected beacause " + cause + "/n";
+        isConnecting = false;
+    }
+    public override void OnJoinedRoom()
+    {
+        networkText.text = "Joined Room with " + PhotonNetwork.CurrentRoom.PlayerCount + "players.\n";
+    }
+    public void ConnectNetwork()
+    {
+        networkText.text = "";
+        isConnecting = true;
+        PhotonNetwork.NickName = playerName.text;
+        if (PhotonNetwork.IsConnected) {
+
+            networkText.text += "Joinging Room...\n";
+            PhotonNetwork.ConnectUsingSettings();
+
+        }
+
+        else
+        {
+            networkText.text += "Connecting...\n";
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 }
+

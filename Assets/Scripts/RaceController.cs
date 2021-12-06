@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Realtime;
+using Photon.Pun;
 
-public class RaceController : MonoBehaviour
+public class RaceController : MonoBehaviourPunCallbacks
 {
     public CheckPointController[] carsController;
     public static bool racing = false;
@@ -21,6 +23,8 @@ public class RaceController : MonoBehaviour
     public GameObject carPrefab;
     public Transform[] spawnPos;
     public int playerCount;
+    public GameObject startRace;
+    public GameObject waitingText;
 
 
     void Start()
@@ -97,6 +101,29 @@ public class RaceController : MonoBehaviour
     public void LoadScene(int index)
     {
         SceneManager.LoadScene(index);
+    }
+    [PunRPC]
+    public void StartGame()
+    {
+        InvokeRepeating("CountDown", 3, 1);
+        startRace.SetActive(false);
+        waitingText.SetActive(false);
+        GameObject[] cars = GameObject.FindGameObjectsWithTag("Car");
+        carsController = new CheckPointController[cars.Length];
+        for(int i = 0; i <cars.Length; i ++)
+        {
+            carsController[i] = cars[i].GetComponent<CheckPointController>();
+        }
+
+    }
+
+    public void BeginGame()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("StartGame", RpcTarget.All,null);
+        }
+
     }
 
 }
