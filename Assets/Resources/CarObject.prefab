@@ -1250,6 +1250,7 @@ MonoBehaviour:
   nameText: {fileID: 5975072159919834119}
   carRenderer: {fileID: 4714800781709123104}
   playerNumber: 0
+  backCamera: {fileID: 5874753622515600457}
 --- !u!114 &8435961876418098704
 MonoBehaviour:
   m_ObjectHideFlags: 0
