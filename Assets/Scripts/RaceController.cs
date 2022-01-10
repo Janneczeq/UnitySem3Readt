@@ -81,7 +81,7 @@ public class RaceController : MonoBehaviourPunCallbacks
         Quaternion startRot = spawnPos[randomStartPosition].rotation;
 
         GameObject playerCar = null;
-        Debug.Log(PhotonNetwork.IsConnected);
+        Debug.Log("Test: "+PhotonNetwork.IsConnected);
         if (PhotonNetwork.IsConnected)
         {
             startPos = spawnPos[PhotonNetwork.CurrentRoom.PlayerCount - 1].position;
@@ -121,14 +121,20 @@ public class RaceController : MonoBehaviourPunCallbacks
     void LateUpdate()
     {
         int finishedLap = 0;
-        foreach (CheckPointController controller in carsController)
-        {
-            if (controller.lap == totalLaps + 1) finishedLap++;
 
-            if (finishedLap == carsController.Length && racing)
+        if (racing)
+        {
+
+
+            foreach (CheckPointController controller in carsController)
             {
-                endPanel.SetActive(true);
-                racing = false;
+                if (controller.lap == totalLaps + 1) finishedLap++;
+
+                if (finishedLap == carsController.Length && racing)
+                {
+                    endPanel.SetActive(true);
+                    racing = false;
+                }
             }
         }
     }
