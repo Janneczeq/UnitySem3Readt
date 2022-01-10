@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/KartTest.unity
-    guid: f919c56811ecf1941b1baba4fdf80fbe
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: a84bc9d1518438b4c954e54024ea5984
+  - enabled: 1
+    path: Assets/Scenes/KartTest.unity
+    guid: f919c56811ecf1941b1baba4fdf80fbe
   m_configObjects: {}

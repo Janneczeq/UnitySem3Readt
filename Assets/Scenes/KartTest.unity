@@ -621,7 +621,7 @@ MonoBehaviour:
   playerCount: 4
   startRace: {fileID: 1175863069}
   waitingText: {fileID: 746717313}
-  mirror: {fileID: 0}
+  mirror: {fileID: 295608920}
 --- !u!4 &19803479
 Transform:
   m_ObjectHideFlags: 0
@@ -3494,7 +3494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8610,7 +8610,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 2.5775511, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -81,6 +81,7 @@ public class RaceController : MonoBehaviourPunCallbacks
         Quaternion startRot = spawnPos[randomStartPosition].rotation;
 
         GameObject playerCar = null;
+        Debug.Log(PhotonNetwork.IsConnected);
         if (PhotonNetwork.IsConnected)
         {
             startPos = spawnPos[PhotonNetwork.CurrentRoom.PlayerCount - 1].position;
@@ -91,7 +92,7 @@ public class RaceController : MonoBehaviourPunCallbacks
             instanceData[1] = (string)PlayerPrefs.GetString("Red");
             instanceData[2] = (string)PlayerPrefs.GetString("Green");
             instanceData[3] = (string)PlayerPrefs.GetString("Blue");
-
+            Debug.Log(OnlinePlayer.LocalPlayerInstance == null);
             if(OnlinePlayer.LocalPlayerInstance == null)
             {
                 playerCar = PhotonNetwork.Instantiate(carPrefab.name, startPos, startRot, 0, instanceData);

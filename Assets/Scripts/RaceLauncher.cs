@@ -57,12 +57,13 @@ public class RaceLauncher : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        networkText.text += "Disconnected beacause " + cause + "/n";
+        networkText.text += "Disconnected beacause " + cause + "\n";
         isConnecting = false;
     }
     public override void OnJoinedRoom()
     {
         networkText.text = "Joined Room with " + PhotonNetwork.CurrentRoom.PlayerCount + "players.\n";
+        PhotonNetwork.LoadLevel("KartTest");
     }
     public void ConnectNetwork()
     {
@@ -72,13 +73,15 @@ public class RaceLauncher : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected) {
 
             networkText.text += "Joinging Room...\n";
-            PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.JoinRandomRoom();
+           
 
         }
 
         else
         {
             networkText.text += "Connecting...\n";
+            PhotonNetwork.GameVersion = gameVersion;
             PhotonNetwork.ConnectUsingSettings();
         }
     }
